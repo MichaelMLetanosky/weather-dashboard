@@ -1,0 +1,52 @@
+h1 {
+    padding: 10px 10px 15px;
+    background-image: linear-gradient(to right, royalblue, navy);
+    color: white;
+    font-size: 36px;
+    font-weight: 700;
+    text-align: center;
+}
+
+aside form {
+    margin: 10px 10px 0px 10px;
+    border-bottom: 1px solid black;
+}
+
+aside nav {
+    margin: 5px 10px;
+}
+
+aside nav button {
+    margin: 5px 0px;
+    width: 100%;
+    border: none;
+    border-radius: 3px;
+    padding: 4px;
+    background-color: lightgray;
+    font-weight: 500;
+}
+
+#cityFormLabel{
+    font-size: 28px;
+    font-weight: 700;
+}
+
+#citySearch {
+    width: 100%;
+    border: 1px solid gray;
+    border-radius: 3px;
+    padding: 5px;
+    font-size: 18px;
+}
+
+#searchBtn {
+    margin: 11px 0px;
+    padding: 4px;
+    width: 100%;
+    border: none;
+    border-radius: 3px;
+    background-color: rgb(90, 158, 235);    
+    font-size: 14px;
+    font-weight: 400;
+    color: white;
+}

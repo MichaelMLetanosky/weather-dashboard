@@ -15,7 +15,48 @@
 </head>
 
 <body>
-
+  <!-- JumboTron -->
+  <header>
+    <h1>Weather Dashboard</h1>
+  </header>
+  <div class="row">
+    <aside class="col-3">
+      <!-- Search Area -->
+      <form class="searchForm">
+        <label for="citySearch" id="cityFormLabel">Search for a City:</label>
+        <!-- Input for city -->
+        <input type="text" id="citySearch" name="citySearch" placeholder="Orlando"><br>
+        <!-- Search Button -->
+        <input type="submit" id="searchBtn" value="Search">
+      </form>
+      <!-- City list buttons generated in JS-->
+      <nav class="cityBtns"></nav>
+    </aside>
+    <!-- Weather Area -->
+    <main class="col-9">
+      <!-- Current Weather -->
+      <section>
+        <!-- City name, date, and weather icon -->
+        <h2></h2>
+        <!-- Temp -->
+        <p></p>
+        <!-- Wind -->
+        <p></p>
+        <!-- Humidity -->
+        <p></p>
+        <!-- UV Index -->
+        <p></p>
+      </section>
+      <!-- 5-Day forcast -->
+      <section>
+        <!-- 5-Day title -->
+        <h4></h4>
+        <!-- Card Area -->
+        <div>
+        </div>
+      </section>
+    </main>
+  </div>
 
   <!--Add jQuery here if neccessary-->
   <script src="./assets/js/script.js"></script>
