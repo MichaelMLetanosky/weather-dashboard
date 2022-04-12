@@ -88,12 +88,21 @@ function displayWeather (event) {
     // Checks that a button in the nav was pressed and not the nav itself or another element
     let selectedBtn = event.target.closest('button');
     if (!selectedBtn) return;
+
+    //Clears weather area
+    var e = document.querySelector(".currentWeather");
+    var child = e.lastElementChild; 
+    while (child) {
+        e.removeChild(child);
+        child = e.lastElementChild;
+    };
+
     // Looks up the array number saved as a data property in the element
     let cityNum = selectedBtn.dataset.arrayNum;
     let storedCities = JSON.parse(localStorage.getItem("cities"));
     let cityInfo = storedCities[cityNum];
 
-    fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${cityInfo.Lat}&lon=${cityInfo.Lon}&exclude=minutely,hourly,alerts&appid=${apiKey}`)
+    fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${cityInfo.Lat}&lon=${cityInfo.Lon}&exclude=minutely,hourly,alerts&units=imperial&appid=${apiKey}`)
         .then(response => {
             //Check that response came back good
             if (!response.ok) {
@@ -110,7 +119,31 @@ function displayWeather (event) {
             };
 
             console.log(data);
-        })
+            //Set city Name, Date, and Icon
+            let cityNameCont = document.createElement("h2");
+            cityNameCont.innerHTML = cityInfo.Name;
+            document.querySelector(".currentWeather").appendChild(cityNameCont);
+            //Set city temp
+            let cityTemp = data.current.temp;
+            let cityTempCont = document.createElement("p");
+            cityTempCont.innerHTML = `Temp: ${cityTemp}°F`;
+            document.querySelector(".currentWeather").appendChild(cityTempCont);
+            //Set city wind
+            let cityWind = data.current.wind_speed;
+            let cityWindCont = document.createElement("p");
+            cityWindCont.innerHTML = `Wind: ${cityWind} MPH`;
+            document.querySelector(".currentWeather").appendChild(cityWindCont);
+            //Set city humidity
+            let cityHumidity = data.current.humidity;
+            let cityHumidityCont = document.createElement("p");
+            cityHumidityCont.innerHTML = `Humidity: ${cityHumidity}%`;
+            document.querySelector(".currentWeather").appendChild(cityHumidityCont);
+            // Set city UV index
+            let cityUVI = data.current.uvi;
+            let cityUVICont = document.createElement("p");
+            cityUVICont.innerHTML = `UV Index: ${cityUVI}`;
+            document.querySelector(".currentWeather").appendChild(cityUVICont);
+        });
 };
 
 // Todo pull city from button clicks
