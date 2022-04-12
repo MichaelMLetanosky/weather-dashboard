@@ -89,10 +89,28 @@ function displayWeather (event) {
     let selectedBtn = event.target.closest('button');
     if (!selectedBtn) return;
     // Looks up the array number saved as a data property in the element
-    let cityNum = selectedBtn.dataset.arrayNum
+    let cityNum = selectedBtn.dataset.arrayNum;
     let storedCities = JSON.parse(localStorage.getItem("cities"));
-    let cityInfo = storedCities[cityNum]
+    let cityInfo = storedCities[cityNum];
 
+    fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${cityInfo.Lat}&lon=${cityInfo.Lon}&exclude=minutely,hourly,alerts&appid=${apiKey}`)
+        .then(response => {
+            //Check that response came back good
+            if (!response.ok) {
+                alert("Could not find reach server, please try again");
+                return;
+            };
+
+            return response.json();
+        })
+        .then(data => {
+            //Checks that a city was found
+            if (data.length === 0) {
+                alert("Sorry, we could not find the weather for that city");
+            };
+
+            console.log(data);
+        })
 };
 
 // Todo pull city from button clicks
