@@ -7,6 +7,21 @@ h1 {
     text-align: center;
 }
 
+h2{
+    font-size: 28px;
+    font-weight: bolder;
+}
+
+h3 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+h4 {
+    font-size: 18px;
+    font-weight: bold;
+}
+
 aside form {
     margin: 10px 10px 0px 10px;
     border-bottom: 1px solid black;
@@ -23,6 +38,28 @@ aside nav button {
     border-radius: 3px;
     padding: 4px;
     background-color: lightgray;
+    font-weight: 500;
+}
+
+.currentWeather {
+    margin: 10px 10px 5px 0px;
+    border: 1px solid black;
+    padding: 8px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.forecastContainer {
+    margin: 10px 10px 5px 0px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.forecastCard {
+    padding: 5px;
+    width: 19%;
+    background-color: rgb(41, 82, 92);
+    color: white;
     font-weight: 500;
 }
 
