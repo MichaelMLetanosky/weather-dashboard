@@ -97,6 +97,13 @@ function displayWeather (event) {
         child = e.lastElementChild;
     };
 
+    var g = document.querySelector(".fiveDayForecast");
+    var child = g.lastElementChild; 
+    while (child) {
+        g.removeChild(child);
+        child = g.lastElementChild;
+    };
+
     // Looks up the array number saved as a data property in the element
     let cityNum = selectedBtn.dataset.arrayNum;
     let storedCities = JSON.parse(localStorage.getItem("cities"));
@@ -143,6 +150,40 @@ function displayWeather (event) {
             let cityUVICont = document.createElement("p");
             cityUVICont.innerHTML = `UV Index: ${cityUVI}`;
             document.querySelector(".currentWeather").appendChild(cityUVICont);
+
+            //Create 5-Day Forecast header
+            let fiveDayTitle = document.createElement("h3");
+            fiveDayTitle.innerHTML = `5-Day Forecast:`;
+            document.querySelector(".fiveDayForecast").appendChild(fiveDayTitle);
+            
+            //Create Container for 5-Day Forecast
+            let fiveDayCardCont = document.createElement("div");
+            fiveDayCardCont.classList.add("forecastContainer");
+            document.querySelector(".fiveDayForecast").appendChild(fiveDayCardCont);
+
+            //for loop to create each day card of the 5-Day forcast
+            for (let i=1; i<6; i++) {
+                //Create the card element
+                let fiveDayCard = document.createElement("div");
+                fiveDayCard.classList.add("forecastCard");
+                document.querySelector(".forecastContainer").appendChild(fiveDayCard);
+                
+                //Set the temps
+                let fiveDayTemp = data.daily[i].temp.max;
+                let fiveDayTempCont = document.createElement("p");
+                fiveDayTempCont.innerHTML = `High Temp: ${fiveDayTemp}°F`;
+                document.querySelectorAll(".forecastCard")[i-1].appendChild(fiveDayTempCont);
+                //Set the winds
+                let fiveDayWind = data.daily[i].wind_speed;
+                let fiveDayWindCont = document.createElement("p");
+                fiveDayWindCont.innerHTML = `Winds: ${fiveDayWind} MPH`;
+                document.querySelectorAll(".forecastCard")[i-1].appendChild(fiveDayWindCont);
+                //Set the humidity
+                let fiveDayHumid = data.daily[i].humidity;
+                let fiveDayHumidCont = document.createElement("p");
+                fiveDayHumidCont.innerHTML = `Humidity: ${fiveDayHumid}%`;
+                document.querySelectorAll(".forecastCard")[i-1].appendChild(fiveDayHumidCont);
+            }
         });
 };
 
