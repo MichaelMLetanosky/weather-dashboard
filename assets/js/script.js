@@ -22,7 +22,7 @@ function addCity(event) {
     inputField.value = "";
 
     //Uses city name for API geocoding
-    fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${inputCity}&appid=${apiKey}`)
+    fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${inputCity}&appid=${apiKey}`)
         .then(response => {
             //Check that response came back good
             if (!response.ok) {
