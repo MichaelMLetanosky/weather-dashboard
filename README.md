@@ -1,10 +1,9 @@
 # 06 Server-Side APIs: Weather Dashboard
 
-*One-line description*
+Dashboard for utilizing a 3rd party API to pull data for weather for cities specified by the user.
+**Note: Removal of cities was beyond the scope of this exercise**
 
-Deployed version can be found at *add link*
-
-![*Description of a screen shot*](./assets/images/)
+Deployed version can be found at https://michaelmletanosky.github.io/weather-dashboard/
 
 ## Your Task
 
